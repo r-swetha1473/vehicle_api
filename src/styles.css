@@ -1,0 +1,356 @@
+/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Top navigation */
+.top-nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+  
+    color: #2596be;
+}
+.top-nav a {
+    color: #2596be;
+    text-decoration: none;
+    margin-right: 16px;
+}
+.top-nav svg,i {
+    font-size: 1.5rem !important;
+    color: #2596be;
+}
+
+/* Main container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Left section */
+.left-section {
+    flex: 2;
+    padding: 16px;
+    /* background-color: #fff; */
+    border-radius: 8px;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+.back-button i {
+    font-size :1rem !important;
+    margin-right: 8px;
+    color: #000;
+}
+
+.policy-card {
+    padding: 16px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.policy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+.policy-title {
+    font-size: 1rem;
+    color: gray;
+}
+.policy-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+.policy-info div {
+    flex: 1;
+}
+.policy-footer{
+    color: gray;
+    
+    box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1);
+}
+.policy-line{
+    color: gray;
+    margin-bottom: 2rem;
+    display: inline-block;
+   
+}
+.m-1{
+    margin: 1rem;
+}
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+.button-group button {
+    background: #ffffff;
+    color: #2596be;
+    padding: 11px 16px;
+    border: solid #f1f1f1;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Expiry warning container */
+.expiry-warning {
+    background: #fdecea;
+    color: #c53030;
+    padding: 12px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 16px 0;
+  
+}
+
+/* Rounded danger icon */
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background: #f2c0bd;
+    border-radius: 50%;
+}
+
+.icon-container i {
+    font-size: 16px;
+    color: white;
+}
+
+/* Policy text */
+.expiry-warning p {
+    font-size: 14px;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.expiry-warning p::first-line {
+    color: black; /* "Your policy" in black */
+    font-weight: 600;
+}
+
+.expiry-warning p span {
+    color: #d32f2f; /* "Expiring on 5 Mar 2025" in red */
+    font-weight: 600;
+}
+
+/* Renew button */
+.expiry-warning button {
+    background: #fdecea;
+    color: #000;
+    padding: 8px 16px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Bike details */
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 16px;
+}
+
+.tab {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    color: #777;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab.active {
+    color: #008000; /* Green for active tab */
+}
+
+.tab.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 100%;
+    height: 2px;
+    background-color: #008000;
+}
+
+.tab:not(.active):hover {
+    color: #555;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Bike Details Section */
+.bike-details {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.details-grid div {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.bike-details h3 {
+    font-size: 1.2rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd; /* Underline for each row */
+}
+
+.detail-item p:first-child {
+    color: gray; /* Left field (heading) in gray */
+    font-weight: 500;
+}
+
+.detail-item p:last-child {
+    color: black; /* Right value in black */
+    font-weight: 600;
+}
+
+
+/* Right section */
+.right-section {
+    flex: 1;
+    padding: 16px;
+}
+.right-section h2 {
+    font-size: 1rem;
+    color:grey;
+}
+.insurance-options {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+}
+.insurance-options button {
+    display: grid;
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    gap: 10px;
+    text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+    .policy-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+.chart-container {
+    width: 100%; /* Make it fully responsive */
+    max-width: 100%; /* Ensure it doesn’t overflow */
+    height: auto; /* Allow height to adjust */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent unwanted scroll */
+  }
+  
+  /* .chart-container svg {
+    width: 100%;
+    height: auto;
+  } */
+  
+  @media (max-width: 768px) {
+    .chart-container {
+      padding: 10px; /* Add some padding for better spacing */
+    }
+  }
+  /* landing.component.css */
+/* .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: #f2f2f2;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  } */
+/* Global styles or inside component styles array */
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(to bottom right, #f2f2f2, #e0e0e0);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .login-container h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .g_id_signin {
+    margin-top: 10px;
+  }
+  .login-card {
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+    
+  .user-profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .user-profile img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  .user-profile span {
+    font-weight: 500;
+  }
+  

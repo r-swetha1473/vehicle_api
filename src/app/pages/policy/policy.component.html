@@ -1,0 +1,130 @@
+<div class="top-nav">
+    <a href="#">Help</a>
+    <i class="fas fa-user-circle"></i>
+</div>
+
+<div class="container">
+    <div class="left-section">
+        <div class="back-button" (click)="goBack()">
+            <i class="fa-solid fa-chevron-left"></i>
+            <span>Back</span>
+        </div>
+
+        <!-- Policy Card -->
+        <div class="policy-card" *ngIf="policy">
+            <div class="policy-header">
+                <div>
+                    <p class="policy-title">{{ policy.planType }}</p>
+                    <h2>{{ policy.make }} {{ policy.model }}</h2> 
+                    <div class="policy-info">
+                        <div>
+                            <p class="policy-title">Start date</p>
+                            <p>{{ policy.startDateFormatted }}</p>
+                        </div>
+                        <div>
+                            <p class="policy-title">End date</p>
+                            <p>{{ policy.endDateFormatted }}</p>
+                        </div>
+                    </div>
+                    <div class="policy-footer">
+                        <p class="policy-line">Policy Holder: {{ policy.owner }}</p>
+                    </div>
+                </div>
+                <div class="vehicleImage">  <img class="m-1 image-inside" [src]="vehicleImage" alt="Vehicle image"></div>
+              
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="button-group">
+                <button (click)="openEditModal()"><i class="fas fa-pencil-alt"></i> Edit</button> 
+                <button (click)="handleClaims()"><i class="fas fa-shield-alt"></i> Claims</button> 
+                <button (click)="downloadPolicy()"><i class="fas fa-download"></i> Download</button>
+                <button (click)="cancelPolicy()" class="btn-danger"><i class="fas fa-times-circle"></i> Cancel</button> 
+            </div>
+        </div>
+
+        <!-- Expiry Warning -->        
+        <div class="expiry-warning" *ngIf="expiryWarning">
+            <div class="icon-container">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <p>Your policy is expiring on <br> <span>{{ policy?.endDateFormatted }}</span></p>
+            <button>Renew</button>
+        </div>
+        
+        <!-- Bike Details -->
+        <div class="bike-details" *ngIf="policy">
+            <div class="tabs">
+                <div class="tab" [class.active]="activeTab === 'overview'" (click)="activeTab = 'overview'">Overview</div>
+                <div class="tab" [class.active]="activeTab === 'coverages'" (click)="activeTab = 'coverages'">Coverages</div>
+            </div>
+
+            <div *ngIf="activeTab === 'overview'">
+                <h3>Bike details</h3>
+                <div>
+                    <div class="detail-item">
+                        <p>Bike number</p>
+                        <p>{{ policy.vehicleNumber }}</p>
+                    </div>
+                    <div class="detail-item">
+                        <p>Make / Model</p>
+                        <p>{{ policy.make }} {{ policy.model }}</p> 
+                    </div>
+                    <div class="detail-item">
+                        <p>Fuel type</p>
+                        <p>{{ policy.fuelType }}</p> 
+                    </div>
+                    <div class="detail-item">
+                        <p>Registration year</p>
+                        <p>{{ policy.registrationYear }}</p> 
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coverage Details Tab -->
+            <div *ngIf="activeTab === 'coverages'">
+                <h3>Coverage Details</h3>
+                <ul>
+                    <li *ngFor="let item of policy.coverage" class="detail-item">{{ item }}</li>
+                </ul>
+            </div>
+        </div>
+    </div> 
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <h2>Buy insurance</h2>
+        <div class="insurance-options">
+            <button>
+                <img src="50x50.svg" alt="Car icon">
+                <span>Car</span>
+            </button>
+            <button>
+                <img src="50x50.svg" alt="Bike icon">
+                <span>Bike</span>
+            </button>
+        </div>
+        <div>
+            <app-multi-line-chart></app-multi-line-chart>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Modal -->
+<div id="editPolicyModal" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Policy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to edit this policy?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-success">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>

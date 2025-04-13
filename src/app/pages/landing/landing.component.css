@@ -1,0 +1,46 @@
+/* 🔹 Heading Style */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65vh; /* Full viewport height */
+}
+
+.policy-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Adjust width as needed */
+    text-align: center;
+}
+
+.policy-card h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2596be;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* 🔹 Search Input */
+.search-box input {
+    
+    padding: 12px;
+    border: 2px solid #2596be;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.search-box input:focus {
+    border-color: #1b6b8a;
+    box-shadow: 0 0 8px rgba(37, 150, 190, 0.5);
+}
+/* Error Message */
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}

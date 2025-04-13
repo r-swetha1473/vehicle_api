@@ -1,0 +1,22 @@
+{
+    "policy": {
+      "planType": "Comprehensive",
+      "make": "Honda",
+      "model": "CBR 650R",
+      "vehicleNumber": "MH12AB1234",
+      "fuelType": "Petrol",
+      "registrationYear": "2019",
+      "startDateFormatted": "2023-01-15",
+      "endDateFormatted": "2024-01-14",
+      "owner": "John Doe",
+      "coverage": [
+        "Third-party liability",
+        "Own damage cover",
+        "Roadside assistance",
+        "Zero depreciation cover"
+      ],
+      "vehicleImage": "assets/default.png"
+    },
+    "expiryWarning": true
+  }
+  

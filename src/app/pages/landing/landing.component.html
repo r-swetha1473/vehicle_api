@@ -1,0 +1,28 @@
+<div class="top-nav">
+    <a href="#">Help</a>
+    <div class="user-profile" (click)="logout()" title="Click to logout">
+        <img [src]="user?.photoUrl" alt="User" referrerpolicy="no-referrer"
+             onerror="this.onerror=null;this.src='assets/default-user.png';"/>
+        <span>{{ user?.name }}</span>
+      </div>
+</div>
+
+<div class="container">
+    <div class="policy-card">
+        <h2>Check Your Insurance</h2>
+        <div class="search-box">
+            <p>Enter Vehicle Number</p>
+            <input type="text" [(ngModel)]="vehicleNumber" placeholder="e.g., MH12AB1234">
+            
+            <div class="button-group">
+                <button (click)="searchVehicle()">
+                    <i class="fas fa-search"></i> Search
+                </button>
+            </div>
+
+         
+            <p *ngIf="errorMessage" class="error-text">{{ errorMessage }}</p>
+        </div>
+    </div>
+</div>
+
