@@ -5,6 +5,7 @@ import { VehicleService } from '../../services/vehicle.service';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
 import { Modal } from 'bootstrap'; 
+import { AuthService } from '../../services/auth.service';
 import { MultiLineChartComponent } from '../../components/multi-line-chart/multi-line-chart.component';
 interface Policy {
   vehicleNumber: string;
@@ -38,9 +39,12 @@ export class PolicyComponent implements OnInit {
   vehicleImage: string = 'assets/default.png';
   errorMessage: string = '';
   private modalInstance: Modal | null = null;
+ 
+user: any;
 
   constructor(
     private route: ActivatedRoute,
+    private authService: AuthService ,
     private router: Router, // Added router for navigation
     private vehicleService: VehicleService,
     private datePipe: DatePipe
@@ -52,35 +56,56 @@ export class PolicyComponent implements OnInit {
     }
   }
   ngOnInit() {
+    this.user = this.authService.getUser();
+    if (!this.user) this.router.navigate(['/login']);
     this.route.params.subscribe((params) => {
       this.vehicleNumber = params['vehicleNumber'];
       if (this.vehicleNumber) {
         this.fetchVehicleData();
       } else {
-        console.error('🚨 Vehicle number is missing from route params.');
         this.errorMessage = 'Invalid vehicle data.';
+        alert(this.errorMessage);  // ✅ Added alert
       }
     });
   }
-
+  
   fetchVehicleData() {
     this.vehicleService.getVehicleData(this.vehicleNumber).subscribe({
       next: (data: any) => {
-        console.log('✅ Received Data:', data);
-        if (data && data.policy) {
-          this.policy = data.policy;
+        if (data?.valid) {
+          this.policy = {
+            vehicleNumber: this.vehicleNumber,
+            planType: 'Standard Plan', // Example static value
+            make: data.makerDescription || 'Unknown',
+            model: data.makerModel || 'Unknown',
+            fuelType: data.fuelType || '',
+            registrationYear: new Date(data.registered).getFullYear().toString(),
+            startDate: data.insurancePolicyNumber ? data.insuranceIssued : '',
+            endDate: data.insuranceUpto !== '1800-01-01' ? data.insuranceUpto : '',
+            owner: data.owner || '',
+            coverage: ['Own Damage', 'Third Party'], // Example default coverages
+
+          };
           this.checkExpiry();
           this.setVehicleImage();
         } else {
-          this.errorMessage = 'No policy data found.';
+          this.errorMessage = 'Invalid vehicle data';
+          alert(this.errorMessage);
         }
       },
       error: (err) => {
-        console.error('🚨 Error:', err);
         this.errorMessage = 'Failed to fetch vehicle data.';
-      },
+        alert(this.errorMessage);
+      }
     });
   }
+ 
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+  
 
   checkExpiry() {
     if (this.policy?.endDate) {
